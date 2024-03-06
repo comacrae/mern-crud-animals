@@ -3,7 +3,7 @@ const router = express.Router();
 const Animal = require("../../models/Animal");
 
 router.get("/test", (req, res) => {
-  res.send("testing api");
+  res.send("Successfully connected to API");
 });
 
 router.get("/", (req, res) => {
@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   Animal.create(req.body)
     .then((animal) =>
-      res.json({ msg: `Animal created successfully: ${animal}` })
+      res.json({ msg: "Animal created successfully", animal_id: animal.id })
     )
     .catch((err) =>
       res.json({ error: `Unable to create animal: ${err}. ${req.body}` })
@@ -36,7 +36,12 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   Animal.findByIdAndUpdate(req.params.id, req.body)
-    .then((animal) => res.json(`Update successful to animal ${animal.name}`))
+    .then((animal) =>
+      res.json({
+        msg: `Update successful to animal ${animal.name}`,
+        animal_id: animal.id,
+      })
+    )
     .catch((err) => {
       res.json({
         error: `Unable to update animal with id ${req.params.id}: ${err}`,
@@ -46,7 +51,12 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   Animal.findByIdAndDelete(req.params.id, req.body)
-    .then((animal) => res.json(`Successfully deleted animal ${animal.name}`))
+    .then((animal) =>
+      res.json({
+        msg: `Successfully deleted animal ${animal.name}`,
+        animal_id: animal.id,
+      })
+    )
     .catch((err) => {
       res.json({
         error: `Unable to delete animal with id ${req.params.id}: ${err}`,

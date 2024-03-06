@@ -14,7 +14,7 @@ app.use("/api/animals", routes);
 
 connectToDatabase();
 app.get("/", (req, res) => {
-  res.send("hello worlddddddddd");
+  res.send("Server connected.");
 });
 
 app.listen(port, () => {

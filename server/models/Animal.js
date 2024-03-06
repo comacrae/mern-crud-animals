@@ -14,10 +14,6 @@ const animalSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  birthday: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
 module.exports = Animal = mongoose.model("animal", animalSchema);
