@@ -6,6 +6,7 @@ export default function CustomButton({
   value,
   disabled,
   onClick,
+  testId,
 }) {
   return (
     <button
@@ -14,6 +15,7 @@ export default function CustomButton({
       value={value}
       disabled={disabled}
       onClick={onClick}
+      data-testid={testId}
     >
       {children}
     </button>

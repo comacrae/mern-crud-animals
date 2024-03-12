@@ -9,9 +9,11 @@ import CustomButton from "./customButton";
 export default function ShowAnimalList() {
   const [animalsArray, setAnimalsArray] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3000/api/animals/").then((res) => {
+    const getData = async () => {
+      const res = await axios.get("http://localhost:3000/api/animals/");
       setAnimalsArray(res.data);
-    });
+    };
+    getData();
   }, []);
 
   function renderEmpty() {

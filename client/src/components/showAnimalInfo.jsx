@@ -36,10 +36,12 @@ export default function ShowAnimalInfo({ props }) {
       <div className="d-grid">
         <div className="row">
           <div className="col-2">
-            <CustomButton onClick={deleteAnimal}>Delete Animal</CustomButton>
+            <CustomButton onClick={deleteAnimal} testId="deleteAnimalButton">
+              Delete Animal
+            </CustomButton>
           </div>
           <div className="col-2">
-            <CustomButton>
+            <CustomButton testId="editAnimalButton">
               <Link
                 to={`/edit-animal/${id}`}
                 style={{ textDecoration: "none", color: "white" }}

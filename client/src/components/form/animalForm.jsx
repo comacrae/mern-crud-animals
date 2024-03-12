@@ -14,6 +14,7 @@ export default function AnimalForm({ onChange, onSubmit, animal, noValidate }) {
             type="text"
             value={animal.name}
             onChange={onChange}
+            testId="animalNameInput"
           />
           <LabeledInput
             name="species"
@@ -21,6 +22,7 @@ export default function AnimalForm({ onChange, onSubmit, animal, noValidate }) {
             type="text"
             value={animal.species}
             onChange={onChange}
+            testId="animalSpeciesInput"
           />
           <LabeledInput
             name="age"
@@ -28,13 +30,16 @@ export default function AnimalForm({ onChange, onSubmit, animal, noValidate }) {
             type="number"
             value={animal.age}
             onChange={onChange}
+            testId="animalAgeInput"
           />
           <div className="row">
             <div className="col-1">
-              <CustomButton type="submit">Submit</CustomButton>
+              <CustomButton type="submit" testId="createAnimalSubmitButton">
+                Submit
+              </CustomButton>
             </div>
             <div className="col-2">
-              <CustomButton>
+              <CustomButton testId={"createAnimalShowAnimalButton"}>
                 <Link to="/" style={{ color: "white", textDecoration: "none" }}>
                   Show Animal List
                 </Link>
