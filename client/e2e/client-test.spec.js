@@ -45,15 +45,11 @@ test("Create animal and update animal form submission works", async ({
   await updateButton.waitFor();
   updateButton.click();
   await page.getByTestId("animalSpeciesInput").fill("new species");
-  await page.screenshot({ path: "formUpdatescreenshot.png" });
   const re = /.*\/show-animal\/.*/;
   await page.getByTestId("createAnimalSubmitButton").click();
   await page.waitForURL(new RegExp(re));
   await page.waitForLoadState();
   await page.screenshot({ path: "formAfterUpdateLoadscreenshot.png" });
-  const newSpecies = page.getByText("new species");
-  await page.screenshot({ path: "formTestscreenshot.png" });
-  expect(newSpecies).toBeTruthy();
 });
 
 test("Check created animal exists and link works and delete works", async ({
@@ -66,7 +62,6 @@ test("Check created animal exists and link works and delete works", async ({
   expect(await postRes.ok()).toBeTruthy();
   const jsonData = await postRes.json();
   testAnimalId = jsonData.animal_id;
-  console.log(testAnimalId);
   await page.goto("/");
   await page.waitForLoadState("domcontentloaded");
   const deletePromise = page.waitForResponse(
